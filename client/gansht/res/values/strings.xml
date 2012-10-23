@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">Geekie Answer Sheet</string>
+    <string name="test_group">ID da prova</string>
+    <string name="user_id">ID do aluno</string>
+    <string name="take_photo">Tirar foto!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_picture_controller">Dados da fato</string>
+
+</resources>
