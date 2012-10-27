@@ -34,15 +34,13 @@ public class PhotoSender {
 			return 400;
 		}
 		
-		return 200;
-		
-//		try {
-//			HttpResponse response = httpClient.execute(post);
-//			return response.getStatusLine().getStatusCode();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//			return 500;
-//		}
+		try {
+			HttpResponse response = httpClient.execute(post);
+			return response.getStatusLine().getStatusCode();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return 500;
+		}
 	}
 	
 }

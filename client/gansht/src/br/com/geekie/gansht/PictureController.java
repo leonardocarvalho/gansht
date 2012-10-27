@@ -1,13 +1,9 @@
 package br.com.geekie.gansht;
 
-import java.io.File;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -17,8 +13,6 @@ public class PictureController extends Activity {
 
 	private static int PHOTO_REQUEST_CODE = 3479;
 	private static int SUCCESS = 200;
-	
-	private Uri photoUri;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,11 +27,7 @@ public class PictureController extends Activity {
     }
     
     public void takePhoto(View view) {
-    	File photo = new File(Environment.getExternalStorageDirectory(), "last_test.jpg");
-    	Intent startCamera = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-    	photoUri = Uri.fromFile(photo);
-    	startCamera.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
-    	startActivityForResult(startCamera, PHOTO_REQUEST_CODE);
+    	startActivityForResult(new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE), PHOTO_REQUEST_CODE);
     }
     
     @Override
@@ -46,12 +36,14 @@ public class PictureController extends Activity {
     	if (requestCode != PHOTO_REQUEST_CODE) return;
     	
     	String feedback;
-    	if (resultCode == RESULT_OK) {
+    	if (resultCode == RESULT_OK) {    		
     		String testGroup = ((EditText) findViewById(R.id.test_group)).getText().toString();
     		EditText userId = (EditText) findViewById(R.id.user_id);
     		 
     		int statusCode = PhotoSender.sendImage(
-    			new PhotoExtractor().extractImage(photoUri), testGroup, userId.getText().toString()
+    			new PhotoEncoder().extractImage((Bitmap) data.getExtras().get("data")), 
+    			testGroup, 
+    			userId.getText().toString()
     		);
     		
     		if (statusCode == SUCCESS) {
