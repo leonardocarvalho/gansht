@@ -18,6 +18,32 @@
         	android:layout_height="wrap_content"
         	android:hint="@string/user_id" />
     
+    <RadioGroup
+    		xmlns:android="http://schemas.android.com/apk/res/android"
+    		android:id="@+id/selected_test"
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:orientation="horizontal">
+       	<RadioButton 
+       	    android:id="@+id/chcn"
+       	    android:layout_height="wrap_content"
+       	    android:layout_width="0dp"
+       	    android:layout_weight="1"
+       	    android:text="@string/chcn" />
+       	<RadioButton 
+       	    android:id="@+id/eng"
+       	    android:layout_height="wrap_content"
+       	    android:layout_width="0dp"
+       	    android:layout_weight="1"
+       	    android:text="@string/eng" />
+       	<RadioButton 
+       	    android:id="@+id/spa"
+       	    android:layout_height="wrap_content"
+       	    android:layout_width="0dp"
+       	    android:layout_weight="1"
+       	    android:text="@string/spa" />
+    </RadioGroup>
+    
     <TextView 
         	android:id="@+id/result_feedback"
         	android:layout_width="match_parent"

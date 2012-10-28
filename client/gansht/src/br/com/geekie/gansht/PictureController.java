@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class PictureController extends Activity {
@@ -30,6 +32,13 @@ public class PictureController extends Activity {
     	startActivityForResult(new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE), PHOTO_REQUEST_CODE);
     }
     
+    private String getSelectedTest() {
+    	RadioGroup testGroup = (RadioGroup) findViewById(R.id.selected_test); 
+    	int testId = testGroup.getCheckedRadioButtonId();
+    	RadioButton test = (RadioButton) testGroup.findViewById(testId);
+    	return test.getText().toString();
+    }
+    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     	super.onActivityResult(requestCode, resultCode, data);
@@ -39,11 +48,13 @@ public class PictureController extends Activity {
     	if (resultCode == RESULT_OK) {    		
     		String testGroup = ((EditText) findViewById(R.id.test_group)).getText().toString();
     		EditText userId = (EditText) findViewById(R.id.user_id);
+    		String testName = this.getSelectedTest();
     		 
     		int statusCode = PhotoSender.sendImage(
     			new PhotoEncoder().extractImage((Bitmap) data.getExtras().get("data")), 
     			testGroup, 
-    			userId.getText().toString()
+    			userId.getText().toString(),
+    			testName
     		);
     		
     		if (statusCode == SUCCESS) {

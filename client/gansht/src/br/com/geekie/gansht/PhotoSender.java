@@ -18,13 +18,14 @@ public class PhotoSender {
 
 	private static String serverURI = "localhost:5000/upload_data";
 	
-	public static int sendImage(byte[] imageData, String testGroup, String userId) {
+	public static int sendImage(byte[] imageData, String testGroup, String userId, String testName) {
 		DefaultHttpClient httpClient = new DefaultHttpClient();
 		HttpPost post = new HttpPost(serverURI);
 		
 		List<NameValuePair> contents = new ArrayList<NameValuePair>();
 		contents.add(new BasicNameValuePair("user_id", userId));
 		contents.add(new BasicNameValuePair("test_group", testGroup));
+		contents.add(new BasicNameValuePair("test_name", testName));
 		contents.add(new BasicNameValuePair("image", Base64.encodeToString(imageData, Base64.DEFAULT)));
 		
 		try {
