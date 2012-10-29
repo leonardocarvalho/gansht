@@ -11,6 +11,7 @@
 # Android files
 *.dex
 *.apk
+*.ap_
 .cache
 
 # python files

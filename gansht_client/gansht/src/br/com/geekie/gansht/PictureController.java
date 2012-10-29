@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class PictureController extends Activity {
 
-	private static int PHOTO_REQUEST_CODE = 3479;
+	public static final int PHOTO_REQUEST_CODE = 3479;
 	private static int SUCCESS = 200;
 	
     @Override
@@ -42,30 +42,31 @@ public class PictureController extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     	super.onActivityResult(requestCode, resultCode, data);
-    	if (requestCode != PHOTO_REQUEST_CODE) return;
-    	
-    	String feedback;
+    	if (requestCode != PHOTO_REQUEST_CODE)	return;
+ 
     	if (resultCode == RESULT_OK) {    		
     		String testGroup = ((EditText) findViewById(R.id.test_group)).getText().toString();
     		EditText userId = (EditText) findViewById(R.id.user_id);
-    		String testName = this.getSelectedTest();
+    		String testName = getSelectedTest();
     		 
-    		int statusCode = PhotoSender.sendImage(
+    		new PhotoSender().sendImage(
+    			this,
     			new PhotoEncoder().extractImage((Bitmap) data.getExtras().get("data")), 
     			testGroup, 
     			userId.getText().toString(),
     			testName
-    		);
-    		
-    		if (statusCode == SUCCESS) {
-    			feedback = "Sent data for " + testGroup + ": " + userId.getText().toString();
-        		userId.setText("");
-    		} else {
-    			feedback = "Failure sending to server. Return code: " + statusCode;
-    		}   		
+    		);    		
     	} else {
-    		feedback = "Picture not taken";
+    		((TextView) findViewById(R.id.result_feedback)).setText("Picture not taken");
     	}
-    	((TextView) findViewById(R.id.result_feedback)).setText(feedback);
+    }
+    
+    public void photoPosted(int statusCode) {
+    	TextView feedback = (TextView) findViewById(R.id.result_feedback);
+    	if (statusCode == SUCCESS) {
+    		feedback.setText("Data saved");
+    	} else {
+    		feedback.setText("Failure sending to server. Return code: " + statusCode);
+    	}
     }
 }
