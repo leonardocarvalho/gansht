@@ -12,3 +12,7 @@
 *.dex
 *.apk
 .cache
+
+# python files
+*.pyc
+*.egg*
