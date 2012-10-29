@@ -64,7 +64,7 @@ public class PhotoSender extends AsyncTask<Object, Object, HttpResponse> {
 	
 	@Override
 	protected void onPostExecute(HttpResponse response) {
-		try {
+		try {			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 			StringBuilder stringBuilder = new StringBuilder();
 			String line;
