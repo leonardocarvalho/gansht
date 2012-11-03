@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    	xmlns:android="http://schemas.android.com/apk/res/android"
-    	xmlns:tools="http://schemas.android.com/tools"
-    	android:layout_width="match_parent"
-    	android:layout_height="match_parent"
-    	android:orientation="vertical">
-    
-    <EditText 
-    		android:id="@+id/test_group"
-        	android:layout_width="match_parent"
-        	android:layout_height="wrap_content"
-        	android:hint="@string/test_group" />
-    
-    <EditText 
-        	android:id="@+id/user_id"
-        	android:layout_width="match_parent"
-        	android:layout_height="wrap_content"
-        	android:hint="@string/user_id" />
-    
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <EditText
+            android:id="@+id/test_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/test_id" />
+
+    <EditText
+            android:id="@+id/user_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/user_id" />
+
     <RadioGroup
-    		android:id="@+id/selected_test"
-    		android:layout_width="fill_parent"
-    		android:layout_height="wrap_content"
-    		android:orientation="horizontal">
-       	<RadioButton 
-       	    android:id="@+id/chcn"
-       	    android:layout_height="wrap_content"
-       	    android:layout_width="0dp"
-       	    android:layout_weight="1"
-       	    android:checked="true"
-       	    android:text="@string/chcn" />
-       	<RadioButton 
-       	    android:id="@+id/eng"
-       	    android:layout_height="wrap_content"
-       	    android:layout_width="0dp"
-       	    android:layout_weight="1"
-       	    android:text="@string/eng" />
-       	<RadioButton 
-       	    android:id="@+id/spa"
-       	    android:layout_height="wrap_content"
-       	    android:layout_width="0dp"
-       	    android:layout_weight="1"
-       	    android:text="@string/spa" />
+            android:id="@+id/selected_test"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/chcn"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="@string/chcn" />
+        <RadioButton
+            android:id="@+id/eng"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/eng" />
+        <RadioButton
+            android:id="@+id/spa"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/spa" />
     </RadioGroup>
-    
-    <TextView 
-        	android:id="@+id/result_feedback"
-        	android:layout_width="match_parent"
-        	android:layout_height="0dp"
-        	android:layout_weight="1" 
-        	android:gravity="center" />
-    
+
+    <TextView
+            android:id="@+id/result_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center" />
+
     <Button
-        	android:layout_width="match_parent"
-        	android:layout_height="wrap_content"
-        	android:text="@string/take_photo"
-        	android:onClick="takePhoto" />
-    
-    
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/take_photo"
+            android:onClick="takePhoto" />
+
+
 </LinearLayout>

@@ -14,6 +14,7 @@ setuptools.setup(
     install_requires = [
         "cryptacular",
         "flask>=0.8",
-        "flask-pymongo>=0.1"
+        "flask-pymongo>=0.1",
+        "PIL>=1.1.7"
     ]
 )
