@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import br.com.geekie.gansht.R;
 import br.com.geekie.gansht.login.Login;
@@ -32,6 +34,13 @@ public class PictureController extends Activity {
     public void takePhoto(View view) {
         startActivityForResult(new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE), PHOTO_REQUEST_CODE);
     }
+    
+    private String getSelectedTest() {
+    	RadioGroup testGroup = (RadioGroup) findViewById(R.id.selected_test); 
+    	int testId = testGroup.getCheckedRadioButtonId();
+    	RadioButton test = (RadioButton) testGroup.findViewById(testId);
+    	return test.getText().toString();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -48,22 +57,26 @@ public class PictureController extends Activity {
             new PhotoSender().sendImage(
                 this,
                 new PhotoEncoder().extractImage((Bitmap) data.getExtras().get("data")),
-                testGroup,
                 userId.getText().toString(),
+                testId,
                 testName,
                 authToken
             );
         } else {
-            ((TextView) findViewById(R.id.result_feedback)).setText("Picture not taken");
+            ((TextView) findViewById(R.id.result_feedback)).setText("Foto não foi tirada");
         }
     }
 
     public void photoPosted(int statusCode) {
         TextView feedback = (TextView) findViewById(R.id.result_feedback);
         if (statusCode == SUCCESS) {
-            feedback.setText("Data saved");
+            feedback.setText("Foto salva");
+            
+            EditText userIdField = (EditText) findViewById(R.id.user_id);
+            userIdField.setText("");
+            userIdField.requestFocus();
         } else {
-            feedback.setText("Failure sending to server. Return code: " + statusCode);
+            feedback.setText("Falha ao enviar informações. Código de retorno: " + statusCode);
         }
     }
 }

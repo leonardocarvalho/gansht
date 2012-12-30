@@ -12,7 +12,7 @@
 
     <!-- View labels -->
     <string name="title_activity_picture_controller">Dados da fato</string>
-    <string name="test_group">ID da prova</string>
+    <string name="test_id">ID da prova</string>
     <string name="user_id">ID do aluno</string>
 
     <string name="chcn">CHCN</string>

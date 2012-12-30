@@ -15,7 +15,7 @@ def with_user(decorated):
     def decorator(*args, **kwargs):
         cont = flask.request.form if flask.request.method.lower() == "post" else flask.request.args
         user = repository.user.get_user_by_auth(cont["auth"])
-        return decorator(user, *args, **kwargs)
+        return decorated(user, *args, **kwargs)
 
     return decorator
 
@@ -37,6 +37,8 @@ def login():
 def generate_random_string(size=10, charset=string.letters + string.digits):
     return "".join(random.choice(charset) for _ in xrange(size))
 
+
+# TODO: remove this code
 
 @blueprint.route("/find_user", methods=["GET"])
 def find_user():

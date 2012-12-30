@@ -29,12 +29,13 @@ public class PhotoSender extends AsyncTask<Object, Object, HttpResponse> {
     private static Random random = new Random();
     private static HashMap<Integer, PictureController> waitingActivities = new HashMap<Integer, PictureController>();
 
-    public void sendImage(PictureController postRequester, byte[] imageData, String testGroup, String userId, String testName, String authToken) {
+    public void sendImage(PictureController postRequester, byte[] imageData, String userId, String testId, String testName, String authToken) {
         Integer postId = random.nextInt();
         List<NameValuePair> contents = new ArrayList<NameValuePair>();
         contents.add(new BasicNameValuePair("post_id", postId.toString()));
         contents.add(new BasicNameValuePair("user_id", userId));
         contents.add(new BasicNameValuePair("test_id", testId));
+        contents.add(new BasicNameValuePair("test_name", testName));
         contents.add(new BasicNameValuePair("image", Base64.encodeToString(imageData, Base64.DEFAULT)));
         contents.add(new BasicNameValuePair("auth", authToken));
 

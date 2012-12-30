@@ -1,4 +1,5 @@
 import flask
+import sys
 
 import gansht_server.config as config
 import gansht_server.mongo as mongo
@@ -14,6 +15,8 @@ def create_app():
     app.register_blueprint(www_photo.blueprint)
     app.register_blueprint(www_results.blueprint)
     app.register_blueprint(www_login.blueprint)
+
+    sys.setrecursionlimit(50000)
 
     return app
 
