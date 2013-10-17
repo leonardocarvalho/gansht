@@ -13,7 +13,9 @@
 *.apk
 *.ap_
 .cache
+/gen/*
 
 # python files
 *.pyc
 *.egg*
+*~

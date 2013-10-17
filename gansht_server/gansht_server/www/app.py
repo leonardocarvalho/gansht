@@ -16,7 +16,9 @@ def create_app():
     return app
 
 
+app = create_app()
+mongo.setup(app)
+
+
 if __name__ == "__main__":
-    app = create_app()
-    mongo.setup(app)
     app.run(host="0.0.0.0", port=config.config.PORT, use_reloader=config.config.USE_RELOADER)

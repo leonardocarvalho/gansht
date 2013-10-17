@@ -4,4 +4,5 @@ db=None
 
 def setup(app):
     global db
-    db = pymongo.Connection("localhost", safe=True, tz_aware=False)[app.config["MONGO_DBNAME"]]
+    db = pymongo.MongoClient(app.config["MONGO_HOST"],
+                             auto_start_request=True)[app.config["MONGO_DBNAME"]]

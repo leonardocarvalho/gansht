@@ -5,7 +5,7 @@ import setuptools
 setuptools.setup(
     name="gansht",
     version="1.0",
-    url="http://www.geekie-answersheet.com.br",
+    url="http://gansht.herokuapp.com",
     maintainer="Geekie",
     maintainer_email="leonardo@geekie.com.br",
     packages=["gansht_server"],

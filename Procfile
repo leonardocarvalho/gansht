@@ -1,0 +1,1 @@
+web: gunicorn gansht_server.www.app:app
