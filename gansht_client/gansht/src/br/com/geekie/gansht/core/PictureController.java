@@ -1,4 +1,4 @@
-package br.com.geekie.gansht;
+package br.com.geekie.gansht.core;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import br.com.geekie.gansht.R;
 
 public class PictureController extends Activity {
 

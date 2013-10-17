@@ -2,6 +2,7 @@ import flask
 
 import gansht_server.config as config
 import gansht_server.mongo as mongo
+import gansht_server.www.login as www_login
 import gansht_server.www.photo as www_photo
 import gansht_server.www.results as www_results
 
@@ -12,6 +13,7 @@ def create_app():
 
     app.register_blueprint(www_photo.blueprint)
     app.register_blueprint(www_results.blueprint)
+    app.register_blueprint(www_login.blueprint)
 
     return app
 

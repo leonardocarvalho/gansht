@@ -1,4 +1,4 @@
-package br.com.geekie.gansht;
+package br.com.geekie.gansht.core;
 
 import java.io.ByteArrayOutputStream;
 

@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".PictureController"
+            android:name="br.com.geekie.gansht.login.Login"
             android:label="@string/title_activity_picture_controller" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

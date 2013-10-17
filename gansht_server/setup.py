@@ -12,6 +12,7 @@ setuptools.setup(
     include_package_data=True,
     zip_safe=False,
     install_requires = [
+        "cryptacular",
         "flask>=0.8",
         "flask-pymongo>=0.1"
     ]

@@ -1,4 +1,4 @@
-package br.com.geekie.gansht;
+package br.com.geekie.gansht.core;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +25,7 @@ import android.util.Base64;
 @SuppressWarnings("unchecked")
 public class PhotoSender extends AsyncTask<Object, Object, HttpResponse> {
 	
-	private static final String serverURI = "http://192.168.1.110:5050/upload_data";
+	private static final String serverURI = "http://gansht.herokuapp.com/upload_data";
 	private static Random random = new Random();	
 	private static HashMap<Integer, PictureController> waitingActivities = new HashMap<Integer, PictureController>();
 	
