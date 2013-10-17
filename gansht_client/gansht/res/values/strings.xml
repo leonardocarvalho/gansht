@@ -2,22 +2,23 @@
 
     <!-- General info -->
     <string name="app_name">Geekie Answer Sheet</string>
-    <string name="menu_settings">Settings</string>    
+    <string name="menu_settings">Settings</string>
 
     <!-- Login screen -->
+    <string name="title_login">Login</string>
     <string name="login_username">Login</string>
     <string name="login_password">Senha</string>
     <string name="login_submit">Entrar</string>
-    
+
     <!-- View labels -->
-        <string name="title_activity_picture_controller">Dados da fato</string>
+    <string name="title_activity_picture_controller">Dados da fato</string>
     <string name="test_group">ID da prova</string>
     <string name="user_id">ID do aluno</string>
-    
+
     <string name="chcn">CHCN</string>
     <string name="eng">Inglês</string>
     <string name="spa">Espanhol</string>
-    
+
     <string name="take_photo">Tirar foto!</string>
 
 </resources>

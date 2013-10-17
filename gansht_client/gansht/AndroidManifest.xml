@@ -9,7 +9,7 @@
 
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>
     <uses-permission android:name="android.permission.INTERNET" />
-    
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -17,11 +17,17 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="br.com.geekie.gansht.login.Login"
+            android:label="@string/title_login" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="br.com.geekie.gansht.core.PictureController"
             android:label="@string/title_activity_picture_controller" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

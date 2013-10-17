@@ -1,8 +1,6 @@
 package br.com.geekie.gansht.login;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,46 +21,48 @@ import android.os.AsyncTask;
 @SuppressWarnings("unchecked")
 public class LoginSender extends AsyncTask<Object, Object, HttpResponse> {
 
-	private static final String serverURI = "http://gansht.herokuapp.com/login";
-	private Login loginActivity;
-	
-	public void doLogin(Login activity, String username, String password) {
-		this.loginActivity = activity;
-		List<NameValuePair> contents = new ArrayList<NameValuePair>();
-		contents.add(new BasicNameValuePair("username", username));
-		contents.add(new BasicNameValuePair("password", password));
-		this.execute(contents);
-	}
+    private static final String serverURI = "http://gansht.herokuapp.com/login";
+    private Login loginActivity;
 
-	@Override
-	protected HttpResponse doInBackground(Object... contents) {		
-		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost post = new HttpPost(serverURI);
+    public void doLogin(Login activity, String username, String password) {
+        this.loginActivity = activity;
+        List<NameValuePair> contents = new ArrayList<NameValuePair>();
+        contents.add(new BasicNameValuePair("username", username));
+        contents.add(new BasicNameValuePair("password", password));
+        this.execute(contents);
+    }
 
-		try {
-			post.setEntity(new UrlEncodedFormEntity((List<NameValuePair>) contents[0]));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-			return null;
-		}
-				
-		try {
-			return httpClient.execute(post);
-		} catch (IOException e) {
-			return null;
-		}		
-	}
-	
-	@Override
-	protected void onPostExecute(HttpResponse response) {
-		try {
-			String auth = EntityUtils.toString(response.getEntity());
-			System.out.println("Auth: " + auth);			
-			boolean success = false;
-			this.loginActivity.loginSuccess(success);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			this.loginActivity.loginSuccess(false);
-		} 
-	}
+    @Override
+    protected HttpResponse doInBackground(Object... contents) {
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost post = new HttpPost(serverURI);
+
+        try {
+            post.setEntity(new UrlEncodedFormEntity((List<NameValuePair>) contents[0]));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        try {
+            return httpClient.execute(post);
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    @Override
+    protected void onPostExecute(HttpResponse response) {
+        if (response.getStatusLine().getStatusCode() > 199 && response.getStatusLine().getStatusCode() < 300) {
+            try {
+                String auth = EntityUtils.toString(response.getEntity());
+                this.loginActivity.loginSuccess(auth);
+            } catch (IOException e) {
+                e.printStackTrace();
+                this.loginActivity.loginFailure();
+            }
+        } else {
+            this.loginActivity.loginFailure();
+        }
+    }
 }
