@@ -2,6 +2,7 @@ package br.com.geekie.gansht.core;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import br.com.geekie.gansht.R;
+import br.com.geekie.gansht.login.Login;
 
 public class PictureController extends Activity {
 
@@ -49,13 +51,16 @@ public class PictureController extends Activity {
     		String testGroup = ((EditText) findViewById(R.id.test_group)).getText().toString();
     		EditText userId = (EditText) findViewById(R.id.user_id);
     		String testName = getSelectedTest();
+    		SharedPreferences preferences = getSharedPreferences("gansht", 0);
+            String authToken = preferences.getString(Login.loginAuthKey, null);
     		 
     		new PhotoSender().sendImage(
     			this,
     			new PhotoEncoder().extractImage((Bitmap) data.getExtras().get("data")), 
     			testGroup, 
     			userId.getText().toString(),
-    			testName
+    			testName,
+    			authToken
     		);    		
     	} else {
     		((TextView) findViewById(R.id.result_feedback)).setText("Picture not taken");

@@ -14,7 +14,7 @@ import br.com.geekie.gansht.core.PictureController;
 public class Login extends Activity {
 
     public static final String loginAuthKey = "loginAuth";
-
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +57,7 @@ public class Login extends Activity {
     }
 
     private boolean isLogged() {
-        SharedPreferences preferences = getSharedPreferences("gansht", 0);
+    	SharedPreferences preferences = getSharedPreferences("gansht", 0);
         String auth = preferences.getString(loginAuthKey, null);
         return auth != null;
     }
